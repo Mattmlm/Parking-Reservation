@@ -14,6 +14,8 @@
 		8421152A1DC15F0A00FFA03B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842115291DC15F0A00FFA03B /* Assets.xcassets */; };
 		8421152D1DC15F0A00FFA03B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8421152B1DC15F0A00FFA03B /* LaunchScreen.storyboard */; };
 		842115371DC1CD0100FFA03B /* PRNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 842115361DC1CD0100FFA03B /* PRNetworking.m */; };
+		8421153B1DC2975A00FFA03B /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8421153A1DC2975A00FFA03B /* BaseModel.m */; };
+		8421153E1DC29FA200FFA03B /* ParkingLocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8421153D1DC29FA200FFA03B /* ParkingLocationModel.m */; };
 		E165576ECAA2427BAC726DDF /* libPods-Parking Reservation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87D6E77AAC99A6353A60E01A /* libPods-Parking Reservation.a */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +32,10 @@
 		8421152E1DC15F0A00FFA03B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		842115351DC1CD0100FFA03B /* PRNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRNetworking.h; sourceTree = "<group>"; };
 		842115361DC1CD0100FFA03B /* PRNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRNetworking.m; sourceTree = "<group>"; };
+		842115391DC2975A00FFA03B /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
+		8421153A1DC2975A00FFA03B /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
+		8421153C1DC29FA200FFA03B /* ParkingLocationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingLocationModel.h; sourceTree = "<group>"; };
+		8421153D1DC29FA200FFA03B /* ParkingLocationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingLocationModel.m; sourceTree = "<group>"; };
 		87D6E77AAC99A6353A60E01A /* libPods-Parking Reservation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Parking Reservation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1D1478DCB2C17F20539B18D /* Pods-Parking Reservation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Parking Reservation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Parking Reservation/Pods-Parking Reservation.debug.xcconfig"; sourceTree = "<group>"; };
 		F349DCB6B6DD16511611768B /* Pods-Parking Reservation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Parking Reservation.release.xcconfig"; path = "Pods/Target Support Files/Pods-Parking Reservation/Pods-Parking Reservation.release.xcconfig"; sourceTree = "<group>"; };
@@ -77,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				842115341DC1CADF00FFA03B /* API */,
+				842115381DC2963700FFA03B /* Models */,
 				842115201DC15F0A00FFA03B /* AppDelegate.h */,
 				842115211DC15F0A00FFA03B /* AppDelegate.m */,
 				842115231DC15F0A00FFA03B /* ViewController.h */,
@@ -105,6 +112,17 @@
 				842115361DC1CD0100FFA03B /* PRNetworking.m */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		842115381DC2963700FFA03B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				842115391DC2975A00FFA03B /* BaseModel.h */,
+				8421153A1DC2975A00FFA03B /* BaseModel.m */,
+				8421153C1DC29FA200FFA03B /* ParkingLocationModel.h */,
+				8421153D1DC29FA200FFA03B /* ParkingLocationModel.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		AFAB417E5C48C452846C45A4 /* Pods */ = {
@@ -242,6 +260,8 @@
 				842115251DC15F0A00FFA03B /* ViewController.m in Sources */,
 				842115221DC15F0A00FFA03B /* AppDelegate.m in Sources */,
 				8421151F1DC15F0A00FFA03B /* main.m in Sources */,
+				8421153E1DC29FA200FFA03B /* ParkingLocationModel.m in Sources */,
+				8421153B1DC2975A00FFA03B /* BaseModel.m in Sources */,
 				842115371DC1CD0100FFA03B /* PRNetworking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

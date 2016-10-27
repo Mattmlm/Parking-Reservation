@@ -20,15 +20,20 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
+  - Mantle (2.1.0):
+    - Mantle/extobjc (= 2.1.0)
+  - Mantle/extobjc (2.1.0)
 
 DEPENDENCIES:
   - AFNetworking
   - Bolts
+  - Mantle
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
 
-PODFILE CHECKSUM: 4174cc1d6cd5d4cd03fef895d489b45c972b0cee
+PODFILE CHECKSUM: d51a90340b11327b65054516c917582f957c5654
 
 COCOAPODS: 1.1.1

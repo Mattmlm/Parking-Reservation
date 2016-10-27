@@ -19,10 +19,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    [[PRNetworking sharedInstance] search:@{
+    BFTask *task = [[PRNetworking sharedInstance] search:@{
                                             @"lat"  : @0,
                                             @"lng"  : @0,
                                             }];
+    [task continueWithBlock:^id _Nullable(BFTask * _Nonnull t) {
+        for (id object in t.result) {
+            NSLog(@"%@", [object description]);
+        }
+        NSLog(@"%@", t.error);
+        return nil;
+    }];
 }
 
 

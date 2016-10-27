@@ -8,5 +8,6 @@ target 'Parking Reservation' do
   # Pods for Parking Reservation
   pod 'AFNetworking'
   pod 'Bolts'
+  pod 'Mantle'
 
 end

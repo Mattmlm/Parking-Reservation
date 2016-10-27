@@ -7,6 +7,8 @@
 //
 
 #import "PRNetworking.h"
+#import "ParkingLocationModel.h"
+#import <Mantle/MTLJSONAdapter.h>
 
 #define kNetworkingRoot @"http://ridecellparking.herokuapp.com/api/v1/"
 #define kNetworkingPathSearch @"parkinglocations/search"
@@ -82,9 +84,14 @@
 - (BFTask *)search:(NSDictionary *)options
 {
     BFTask *task = [self GET:kNetworkingPathSearch parameters:options];
-    return [task continueWithBlock:^id _Nullable(BFTask * _Nonnull continuedTask) {
-        if (continuedTask.error == nil) {
-            NSLog(@"%@", continuedTask.result);
+    return [task continueWithBlock:^id _Nullable(BFTask * _Nonnull task) {
+        BFTask *continuedTask;
+        if (task.error == nil) {
+            NSError *mantleError = nil;
+            NSArray<ParkingLocationModel *> *array = [MTLJSONAdapter modelsOfClass:[ParkingLocationModel class] fromJSONArray:task.result error:&mantleError];
+            continuedTask = mantleError != nil ? [BFTask taskWithError:mantleError] : [BFTask taskWithResult:array];
+        } else {
+            continuedTask = [BFTask taskWithError:task.error];
         }
         return continuedTask;
     }];

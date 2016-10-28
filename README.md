@@ -23,6 +23,7 @@ Email me, and I can distribute a build through Fabric.
 
 ## Further Polish Items
 
+- Add the ability to search the map for the place you want to reserve a parking spot
 - Fix duplicate pins
 - Update and refresh map data according to reservations, etc.
 - After reserving, reserved spot should be highlighted as a special pin

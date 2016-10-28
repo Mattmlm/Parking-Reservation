@@ -174,6 +174,7 @@
 				842115181DC15F0A00FFA03B /* Resources */,
 				6604C13A60AECCC0E021B1CD /* [CP] Embed Pods Frameworks */,
 				49A271C937BFD750EBE58563 /* [CP] Copy Pods Resources */,
+				8421154B1DC3B11500FFA03B /* Fabric Script */,
 			);
 			buildRules = (
 			);
@@ -281,6 +282,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Parking Reservation/Pods-Parking Reservation-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		8421154B1DC3B11500FFA03B /* Fabric Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Fabric Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" cfe8196af2de132520e7923c5bd8b9785f1034ed 7fb93c634a69708eca191c72afc328d43aae0bd027e93637ac42185f5d0d5c29";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -421,7 +436,7 @@
 				DEVELOPMENT_TEAM = P339YGCLEU;
 				INFOPLIST_FILE = "Parking Reservation/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "mattmo.Parking-Reservation";
+				PRODUCT_BUNDLE_IDENTIFIER = mattmo.ParkingReservation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -434,7 +449,7 @@
 				DEVELOPMENT_TEAM = P339YGCLEU;
 				INFOPLIST_FILE = "Parking Reservation/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "mattmo.Parking-Reservation";
+				PRODUCT_BUNDLE_IDENTIFIER = mattmo.ParkingReservation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

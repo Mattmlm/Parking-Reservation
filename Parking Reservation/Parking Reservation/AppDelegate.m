@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "PRMapViewController.h"
+@import Fabric;
+@import Crashlytics;
 
 @interface AppDelegate ()
 
@@ -25,6 +27,8 @@
     [window addSubview:viewController.view];
     self.window = window;
     [window makeKeyAndVisible];
+    
+    [Fabric with:@[[Crashlytics class]]];
     
     return YES;
 }

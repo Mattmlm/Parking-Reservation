@@ -2,13 +2,15 @@
 
 ## Setup instructions
 Options
-1) Build yourself
-2) Download through Fabric
+
+1. Build yourself
+2. Download through Fabric
 
 ### Build yourself
-1) Clone the repo
-2) Open up .xcworkspace project file
-3) Build the app, this should run as is.
+
+1. Clone the repo
+2. Open up .xcworkspace project file
+3. Build the app, this should run as is.
 
 ### Download through Fabric
 Email me, and I can distribute a build through Fabric.
@@ -33,21 +35,20 @@ Email me, and I can distribute a build through Fabric.
 Design a street parking reservation app.
 
 ## Problem Description:
-X View all available street parking spots on a map.
-X Select a parking spot to see more information about the spot
-  X Spot name
-  X Spot number
-  X Per minute charge
-X Reserve a parking spot.
-X Option to extend reservation after the initial reservation time elapse.
-X See a summary of the reservation at the end of the reservation duration.
+* [x] View all available street parking spots on a map.
+* [x] Select a parking spot to see more information about the spot
+  * [x] Spot name
+  * [x] Spot number
+  * [x] Per minute charge
+* [x] Reserve a parking spot.
+* [x] Option to extend reservation after the initial reservation time elapse.
+* [x] See a summary of the reservation at the end of the reservation duration.
 
 ## Bonus
-X Distribution of app through Testflight/Fabric or one of the beta distribution
+* [x] Distribution of app through Testflight/Fabric or one of the beta distribution
 systems.
 
 ## Assumptions:
 - App is for the city of San Francisco
 - User has an account and is logged in.
 - User has a payment method configured in their account
-

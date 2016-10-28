@@ -11,6 +11,7 @@
 @interface ParkingLocationAnnotation()
 
 @property (nonatomic) CLLocationCoordinate2D coordinate;
+@property (nonatomic) ParkingLocationModel *parkingLocation;
 
 @end
 
@@ -23,6 +24,7 @@
         CLLocationDegrees longitude = [parkingLocation.longitude doubleValue];
         CLLocationCoordinate2D parkingCoordinate = CLLocationCoordinate2DMake(latitude, longitude);
         self.coordinate = parkingCoordinate;
+        self.parkingLocation = parkingLocation;
     }
     
     return self;

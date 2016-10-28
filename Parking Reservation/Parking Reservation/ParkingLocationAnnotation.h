@@ -13,6 +13,7 @@
 @interface ParkingLocationAnnotation : NSObject <MKAnnotation>
 
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
+@property (nonatomic, readonly) ParkingLocationModel *parkingLocation;
 
 - (instancetype)initWithParkingLocation:(ParkingLocationModel *)parkingLocation;
 

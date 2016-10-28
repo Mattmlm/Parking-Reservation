@@ -18,6 +18,7 @@
 		8421153E1DC29FA200FFA03B /* ParkingLocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8421153D1DC29FA200FFA03B /* ParkingLocationModel.m */; };
 		842115401DC2CE4600FFA03B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8421153F1DC2CE4600FFA03B /* MapKit.framework */; };
 		842115431DC2D89400FFA03B /* ParkingLocationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 842115421DC2D89400FFA03B /* ParkingLocationAnnotation.m */; };
+		842115461DC2FF0000FFA03B /* PRParkingLocationPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 842115451DC2FF0000FFA03B /* PRParkingLocationPreviewView.m */; };
 		E165576ECAA2427BAC726DDF /* libPods-Parking Reservation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87D6E77AAC99A6353A60E01A /* libPods-Parking Reservation.a */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,8 @@
 		8421153F1DC2CE4600FFA03B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		842115411DC2D89400FFA03B /* ParkingLocationAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingLocationAnnotation.h; sourceTree = "<group>"; };
 		842115421DC2D89400FFA03B /* ParkingLocationAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingLocationAnnotation.m; sourceTree = "<group>"; };
+		842115441DC2FF0000FFA03B /* PRParkingLocationPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRParkingLocationPreviewView.h; sourceTree = "<group>"; };
+		842115451DC2FF0000FFA03B /* PRParkingLocationPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRParkingLocationPreviewView.m; sourceTree = "<group>"; };
 		87D6E77AAC99A6353A60E01A /* libPods-Parking Reservation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Parking Reservation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1D1478DCB2C17F20539B18D /* Pods-Parking Reservation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Parking Reservation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Parking Reservation/Pods-Parking Reservation.debug.xcconfig"; sourceTree = "<group>"; };
 		F349DCB6B6DD16511611768B /* Pods-Parking Reservation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Parking Reservation.release.xcconfig"; path = "Pods/Target Support Files/Pods-Parking Reservation/Pods-Parking Reservation.release.xcconfig"; sourceTree = "<group>"; };
@@ -95,6 +98,8 @@
 				842115211DC15F0A00FFA03B /* AppDelegate.m */,
 				842115231DC15F0A00FFA03B /* PRMapViewController.h */,
 				842115241DC15F0A00FFA03B /* PRMapViewController.m */,
+				842115441DC2FF0000FFA03B /* PRParkingLocationPreviewView.h */,
+				842115451DC2FF0000FFA03B /* PRParkingLocationPreviewView.m */,
 				842115411DC2D89400FFA03B /* ParkingLocationAnnotation.h */,
 				842115421DC2D89400FFA03B /* ParkingLocationAnnotation.m */,
 				842115261DC15F0A00FFA03B /* Main.storyboard */,
@@ -276,6 +281,7 @@
 				842115221DC15F0A00FFA03B /* AppDelegate.m in Sources */,
 				8421151F1DC15F0A00FFA03B /* main.m in Sources */,
 				8421153E1DC29FA200FFA03B /* ParkingLocationModel.m in Sources */,
+				842115461DC2FF0000FFA03B /* PRParkingLocationPreviewView.m in Sources */,
 				8421153B1DC2975A00FFA03B /* BaseModel.m in Sources */,
 				842115371DC1CD0100FFA03B /* PRNetworking.m in Sources */,
 			);

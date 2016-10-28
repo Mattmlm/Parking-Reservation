@@ -11,6 +11,7 @@
 #import "ParkingLocationModel.h"
 #import "ParkingLocationAnnotation.h"
 #import "PRParkingLocationPreviewView.h"
+#import "PRNotificationManager.h"
 
 @interface PRMapViewController ()<MKMapViewDelegate, PRParkingLocationPreviewViewDelegate>
 
@@ -21,6 +22,14 @@
 @end
 
 @implementation PRMapViewController
+
+- (instancetype)init
+{
+    if (self = [super init]) {
+        [self registerNotifications];
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,6 +48,11 @@
     [self setupSearchView];
 }
 
+- (void)dealloc
+{
+    [self removeNotifications];
+}
+
 - (void)setupSearchView
 {
     CGRect popupViewRect = CGRectInset(self.view.bounds, 15, (self.view.bounds.size.height/4));
@@ -46,6 +60,37 @@
     self.previewView = [[PRParkingLocationPreviewView alloc] initWithFrame:popupViewRect];
     self.previewView.delegate = self;
     [self.view addSubview:self.previewView];
+}
+
+- (void)registerNotifications
+{
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    
+    [center addObserver:self selector:@selector(showParkingExpired:) name:@"ParkingReservationExpiredNotification" object:nil];
+}
+
+- (void)removeNotifications
+{
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    
+    [center removeObserver:self name:@"ParkingReservationExpiredNotification" object:nil];
+}
+     
+- (void)showParkingExpired:(NSNotification *)notification
+{
+    NSDictionary *userInfo = [notification userInfo];
+    NSString *name = userInfo[@"parkingLocationName"];
+    int parkingLocationID = [userInfo[@"parkingLocationID"] intValue];
+    
+    NSString *expiredMessage = [NSString stringWithFormat:@"Your reservation for parking spot %@ has expired. Would you like to extend?", name];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Spot Expired" message:expiredMessage preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Extend" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [[PRNetworking sharedInstance] reserve:parkingLocationID withOptions:nil];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleCancel handler:nil]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self presentViewController:alert animated:YES completion:nil];
+    });
 }
 
 - (void)updateSearchViewWith:(ParkingLocationModel *)parkingLocation
@@ -91,6 +136,7 @@
 
 - (void)parkingLocationPreviewView:(PRParkingLocationPreviewView *)previewView didReserveSpot:(ParkingLocationModel *)parkingLocation
 {
+    [[PRNotificationManager sharedInstance] scheduleNotifications:nil forParkingLocation:parkingLocation];
     NSString *successMessage = [NSString stringWithFormat:@"You've successfully reserved spot %@", parkingLocation.name];
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Spot Reserved!" message:successMessage preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];

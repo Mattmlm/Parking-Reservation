@@ -12,7 +12,7 @@
 @import Fabric;
 @import Crashlytics;
 
-@interface AppDelegate ()
+@interface AppDelegate ()<UNUserNotificationCenterDelegate>
 
 @end
 
@@ -30,12 +30,15 @@
     [window makeKeyAndVisible];
     
     [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:UNAuthorizationOptionAlert|UNAuthorizationOptionSound completionHandler:^(BOOL granted, NSError * _Nullable error) {
-        if (!granted) {
-            NSLog(@"User did not give permission.");
+        if (granted) {
+            [application registerForRemoteNotifications];
         }
     }];
     
     [Fabric with:@[[Crashlytics class]]];
+    
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    center.delegate = self;
     
     return YES;
 }
@@ -67,5 +70,32 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler
+{
+    UNNotificationContent *content = notification.request.content;
+    // Process notification content
+
+    NSDictionary *userInfo = content.userInfo;
+    
+    completionHandler = ^(UNNotificationPresentationOptions options) {
+        NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+        [notificationCenter postNotificationName:@"ParkingReservationExpiredNotification" object:nil userInfo:userInfo];
+    };
+    
+    completionHandler(UNNotificationPresentationOptionAlert | UNNotificationPresentationOptionSound);
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler
+{
+    UNNotificationContent *content = response.notification.request.content;
+    NSDictionary *userInfo = content.userInfo;
+    
+    completionHandler = ^{
+        NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+        [notificationCenter postNotificationName:@"ParkingReservationExpiredNotification" object:nil userInfo:userInfo];
+    };
+    
+    completionHandler();
+}
 
 @end

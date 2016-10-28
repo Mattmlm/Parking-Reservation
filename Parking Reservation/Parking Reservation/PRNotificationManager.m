@@ -7,6 +7,7 @@
 //
 
 #import "PRNotificationManager.h"
+#import "ParkingLocationModel.h"
 
 @implementation PRNotificationManager
 
@@ -28,21 +29,31 @@
     return sharedInstance;
 }
 
-- (void)scheduleNotifications:(NSDate *)date
+- (void)scheduleNotifications:(NSDate *)date forParkingLocation:(ParkingLocationModel *)parkingLocation
 {
     NSDate *tempDate = [NSDate dateWithTimeIntervalSinceNow:10];
     NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
-    NSDateComponents *components = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit|NSTimeZoneCalendarUnit) fromDate:tempDate];
+    
+    NSUInteger options = (NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute|NSCalendarUnitSecond|NSCalendarUnitTimeZone);
+    NSDateComponents *components = [calendar components:options fromDate:tempDate];
     NSDateComponents *newComponents = [components copy];
     
     UNCalendarNotificationTrigger *trigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:newComponents repeats:NO];
     
     UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
-    content.title = @"Testing";
-    content.body = @"This better work.";
+    content.title = @"Parking Reservation";
+    content.body = @"Your parking reservation has expired.";
+    content.categoryIdentifier = @"ParkingReservationExpiredCategoryIdentifier";
+    content.userInfo = @{
+                         @"NotificationType"    : @"ParkingReservationExpiredNotification",
+                         @"parkingLocationID"   : @(parkingLocation.parkingLocationID),
+                         @"parkingLocationName" : parkingLocation.name,
+                         @"costPerMin"          : parkingLocation.costPerMin,
+                         };
     content.sound = [UNNotificationSound defaultSound];
     
-    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"testingNotification" content:content trigger:trigger];
+    
+    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"ParkingNotificationExpiredRequestIdentifier" content:content trigger:trigger];
     
     [[UNUserNotificationCenter currentNotificationCenter] removeAllPendingNotificationRequests];
     [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {

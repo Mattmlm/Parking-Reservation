@@ -7,6 +7,7 @@
 //
 
 #import "PRParkingLocationPreviewView.h"
+#import "PRNetworking.h"
 
 @interface PRParkingLocationPreviewView()
 
@@ -16,6 +17,9 @@
 @property (nonatomic) UILabel *parkingSpotNumberLabel;
 @property (nonatomic) UILabel *parkingSpotCostTitleLabel;
 @property (nonatomic) UILabel *parkingSpotCostLabel;
+@property (nonatomic) UIButton *reserveButton;
+
+@property (nonatomic, copy) ParkingLocationModel *parkingLocation;
 
 @end
 
@@ -32,6 +36,7 @@
         [self addSubview:self.parkingSpotNameLabel];
         [self addSubview:self.parkingSpotCostTitleLabel];
         [self addSubview:self.parkingSpotCostLabel];
+        [self addSubview:self.reserveButton];
     }
     return self;
 }
@@ -64,13 +69,34 @@
     rightOfTitleLabelTransform = CGAffineTransformMakeTranslation(CGRectGetMaxX(self.parkingSpotCostTitleLabel.frame), 0);
     self.parkingSpotCostLabel.frame = CGRectApplyAffineTransform(self.parkingSpotCostTitleLabel.frame, rightOfTitleLabelTransform);
     
+    self.reserveButton.center = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height - 15 - self.reserveButton.bounds.size.height / 2);
 }
 
 - (void)updateSearchViewWith:(ParkingLocationModel *)parkingLocation
 {
+    self.parkingLocation = [parkingLocation copy];
     self.parkingSpotNameLabel.text = parkingLocation.name;
     self.parkingSpotNumberLabel.text = [NSString stringWithFormat:@"%d", parkingLocation.parkingLocationID];
     self.parkingSpotCostLabel.text = [NSString stringWithFormat:@"%@/min", parkingLocation.costPerMin];
+}
+
+- (void)reserveSpot:(id)sender
+{
+    BFTask *reserveTask = [[PRNetworking sharedInstance] reserve:self.parkingLocation.parkingLocationID withOptions:nil];
+    
+    [reserveTask continueWithBlock:^id _Nullable(BFTask * _Nonnull t) {
+        NSLog(@"%@", t.result);
+        NSLog(@"%@", t.error);
+        
+        NSError *mantleError;
+        ParkingLocationModel *parkingLocation = [MTLJSONAdapter modelOfClass:ParkingLocationModel.class fromJSONDictionary:t.result error:&mantleError];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.delegate parkingLocationPreviewView:self didReserveSpot:parkingLocation];
+        });
+        
+        return nil;
+    }];
 }
 
 #pragma mark - Lazy initializers
@@ -133,6 +159,22 @@
         label.text = @"--/min";
         label;
     }) : _parkingSpotCostLabel;
+}
+
+- (UIButton *)reserveButton
+{
+    return !_reserveButton ? _reserveButton =
+    ({
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setTitle:@"Reserve Spot" forState:UIControlStateNormal];
+        [button setContentEdgeInsets:UIEdgeInsetsMake(5, 15, 5, 15)];
+        [button sizeToFit];
+        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [button setBackgroundColor:[UIColor blueColor]];
+        [button addTarget:self action:@selector(reserveSpot:) forControlEvents:UIControlEventTouchUpInside];
+        button.layer.cornerRadius = 5;
+        button;
+    }) : _reserveButton;
 }
 
 @end

@@ -12,6 +12,7 @@
 
 #define kNetworkingRoot @"http://ridecellparking.herokuapp.com/api/v1/"
 #define kNetworkingPathSearch @"parkinglocations/search"
+#define kNetworkingPathReserveFormat @"parkinglocations/%d/reserve"
 
 @implementation PRNetworking
 
@@ -95,6 +96,13 @@
         }
         return continuedTask;
     }];
+}
+
+- (BFTask *)reserve:(int)parkingLocationID withOptions:(NSDictionary *)options
+{
+    NSString* reserveURL = [NSString stringWithFormat:kNetworkingPathReserveFormat, parkingLocationID];
+    BFTask *task = [self POST:reserveURL parameters:options];
+    return task;
 }
 
 @end

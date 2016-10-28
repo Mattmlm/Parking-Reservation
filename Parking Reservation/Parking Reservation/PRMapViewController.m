@@ -12,7 +12,7 @@
 #import "ParkingLocationAnnotation.h"
 #import "PRParkingLocationPreviewView.h"
 
-@interface PRMapViewController ()<MKMapViewDelegate>
+@interface PRMapViewController ()<MKMapViewDelegate, PRParkingLocationPreviewViewDelegate>
 
 @property (nonatomic, strong) MKMapView *mapView;
 @property (nonatomic, strong) PRParkingLocationPreviewView *previewView;
@@ -44,6 +44,7 @@
     CGRect popupViewRect = CGRectInset(self.view.bounds, 15, (self.view.bounds.size.height/4));
     popupViewRect.origin.y = 15;
     self.previewView = [[PRParkingLocationPreviewView alloc] initWithFrame:popupViewRect];
+    self.previewView.delegate = self;
     [self.view addSubview:self.previewView];
 }
 
@@ -73,15 +74,27 @@
         for (id item in t.result) {
             if ([item isKindOfClass:ParkingLocationModel.class]) {
                 ParkingLocationModel *parkingLocation = (ParkingLocationModel*)item;
-                ParkingLocationAnnotation *annotation = [[ParkingLocationAnnotation alloc] initWithParkingLocation:parkingLocation];
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.mapView addAnnotation:annotation];
-                });
+                if (!parkingLocation.isReserved) {
+                    ParkingLocationAnnotation *annotation = [[ParkingLocationAnnotation alloc] initWithParkingLocation:parkingLocation];
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.mapView addAnnotation:annotation];
+                    });
+                }
             }
         }
         return nil;
     }];
+}
+
+#pragma mark - PRParkingLocationPreviewViewDelegate
+
+- (void)parkingLocationPreviewView:(PRParkingLocationPreviewView *)previewView didReserveSpot:(ParkingLocationModel *)parkingLocation
+{
+    NSString *successMessage = [NSString stringWithFormat:@"You've successfully reserved spot %@", parkingLocation.name];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Spot Reserved!" message:successMessage preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - MKMapViewDelegate

@@ -136,7 +136,9 @@
 
 - (void)parkingLocationPreviewView:(PRParkingLocationPreviewView *)previewView didReserveSpot:(ParkingLocationModel *)parkingLocation
 {
-    [[PRNotificationManager sharedInstance] scheduleNotifications:nil forParkingLocation:parkingLocation];
+    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:parkingLocation.maxReserveTime * 60];
+    
+    [[PRNotificationManager sharedInstance] scheduleNotifications:date forParkingLocation:parkingLocation];
     NSString *successMessage = [NSString stringWithFormat:@"You've successfully reserved spot %@", parkingLocation.name];
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Spot Reserved!" message:successMessage preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];

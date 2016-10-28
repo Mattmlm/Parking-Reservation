@@ -31,11 +31,10 @@
 
 - (void)scheduleNotifications:(NSDate *)date forParkingLocation:(ParkingLocationModel *)parkingLocation
 {
-    NSDate *tempDate = [NSDate dateWithTimeIntervalSinceNow:10];
     NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
     
     NSUInteger options = (NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute|NSCalendarUnitSecond|NSCalendarUnitTimeZone);
-    NSDateComponents *components = [calendar components:options fromDate:tempDate];
+    NSDateComponents *components = [calendar components:options fromDate:date];
     NSDateComponents *newComponents = [components copy];
     
     UNCalendarNotificationTrigger *trigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:newComponents repeats:NO];

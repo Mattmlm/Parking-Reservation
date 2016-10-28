@@ -8,7 +8,6 @@
 
 #import "PRParkingLocationPreviewView.h"
 #import "PRNetworking.h"
-#import "PRNotificationManager.h"
 
 @interface PRParkingLocationPreviewView()
 
@@ -79,6 +78,8 @@
     self.parkingSpotNameLabel.text = parkingLocation.name;
     self.parkingSpotNumberLabel.text = [NSString stringWithFormat:@"%d", parkingLocation.parkingLocationID];
     self.parkingSpotCostLabel.text = [NSString stringWithFormat:@"%@/min", parkingLocation.costPerMin];
+    [self.reserveButton setBackgroundColor:[UIColor blueColor]];
+    [self.reserveButton setEnabled:YES];
 }
 
 - (void)reserveSpot:(id)sender
@@ -171,9 +172,10 @@
         [button setContentEdgeInsets:UIEdgeInsetsMake(5, 15, 5, 15)];
         [button sizeToFit];
         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [button setBackgroundColor:[UIColor blueColor]];
+        [button setBackgroundColor:[UIColor grayColor]];
         [button addTarget:self action:@selector(reserveSpot:) forControlEvents:UIControlEventTouchUpInside];
         button.layer.cornerRadius = 5;
+        button.enabled = NO;
         button;
     }) : _reserveButton;
 }

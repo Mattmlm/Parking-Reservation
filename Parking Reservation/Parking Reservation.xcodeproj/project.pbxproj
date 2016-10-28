@@ -9,13 +9,15 @@
 /* Begin PBXBuildFile section */
 		8421151F1DC15F0A00FFA03B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8421151E1DC15F0A00FFA03B /* main.m */; };
 		842115221DC15F0A00FFA03B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 842115211DC15F0A00FFA03B /* AppDelegate.m */; };
-		842115251DC15F0A00FFA03B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842115241DC15F0A00FFA03B /* ViewController.m */; };
+		842115251DC15F0A00FFA03B /* PRMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842115241DC15F0A00FFA03B /* PRMapViewController.m */; };
 		842115281DC15F0A00FFA03B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842115261DC15F0A00FFA03B /* Main.storyboard */; };
 		8421152A1DC15F0A00FFA03B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842115291DC15F0A00FFA03B /* Assets.xcassets */; };
 		8421152D1DC15F0A00FFA03B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8421152B1DC15F0A00FFA03B /* LaunchScreen.storyboard */; };
 		842115371DC1CD0100FFA03B /* PRNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 842115361DC1CD0100FFA03B /* PRNetworking.m */; };
 		8421153B1DC2975A00FFA03B /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8421153A1DC2975A00FFA03B /* BaseModel.m */; };
 		8421153E1DC29FA200FFA03B /* ParkingLocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8421153D1DC29FA200FFA03B /* ParkingLocationModel.m */; };
+		842115401DC2CE4600FFA03B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8421153F1DC2CE4600FFA03B /* MapKit.framework */; };
+		842115431DC2D89400FFA03B /* ParkingLocationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 842115421DC2D89400FFA03B /* ParkingLocationAnnotation.m */; };
 		E165576ECAA2427BAC726DDF /* libPods-Parking Reservation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87D6E77AAC99A6353A60E01A /* libPods-Parking Reservation.a */; };
 /* End PBXBuildFile section */
 
@@ -24,8 +26,8 @@
 		8421151E1DC15F0A00FFA03B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		842115201DC15F0A00FFA03B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		842115211DC15F0A00FFA03B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		842115231DC15F0A00FFA03B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		842115241DC15F0A00FFA03B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		842115231DC15F0A00FFA03B /* PRMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PRMapViewController.h; sourceTree = "<group>"; };
+		842115241DC15F0A00FFA03B /* PRMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PRMapViewController.m; sourceTree = "<group>"; };
 		842115271DC15F0A00FFA03B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		842115291DC15F0A00FFA03B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8421152C1DC15F0A00FFA03B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +38,9 @@
 		8421153A1DC2975A00FFA03B /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		8421153C1DC29FA200FFA03B /* ParkingLocationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingLocationModel.h; sourceTree = "<group>"; };
 		8421153D1DC29FA200FFA03B /* ParkingLocationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingLocationModel.m; sourceTree = "<group>"; };
+		8421153F1DC2CE4600FFA03B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		842115411DC2D89400FFA03B /* ParkingLocationAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingLocationAnnotation.h; sourceTree = "<group>"; };
+		842115421DC2D89400FFA03B /* ParkingLocationAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingLocationAnnotation.m; sourceTree = "<group>"; };
 		87D6E77AAC99A6353A60E01A /* libPods-Parking Reservation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Parking Reservation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1D1478DCB2C17F20539B18D /* Pods-Parking Reservation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Parking Reservation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Parking Reservation/Pods-Parking Reservation.debug.xcconfig"; sourceTree = "<group>"; };
 		F349DCB6B6DD16511611768B /* Pods-Parking Reservation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Parking Reservation.release.xcconfig"; path = "Pods/Target Support Files/Pods-Parking Reservation/Pods-Parking Reservation.release.xcconfig"; sourceTree = "<group>"; };
@@ -46,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				842115401DC2CE4600FFA03B /* MapKit.framework in Frameworks */,
 				E165576ECAA2427BAC726DDF /* libPods-Parking Reservation.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -56,6 +62,7 @@
 		3510773B021A591F64C1831E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8421153F1DC2CE4600FFA03B /* MapKit.framework */,
 				87D6E77AAC99A6353A60E01A /* libPods-Parking Reservation.a */,
 			);
 			name = Frameworks;
@@ -86,8 +93,10 @@
 				842115381DC2963700FFA03B /* Models */,
 				842115201DC15F0A00FFA03B /* AppDelegate.h */,
 				842115211DC15F0A00FFA03B /* AppDelegate.m */,
-				842115231DC15F0A00FFA03B /* ViewController.h */,
-				842115241DC15F0A00FFA03B /* ViewController.m */,
+				842115231DC15F0A00FFA03B /* PRMapViewController.h */,
+				842115241DC15F0A00FFA03B /* PRMapViewController.m */,
+				842115411DC2D89400FFA03B /* ParkingLocationAnnotation.h */,
+				842115421DC2D89400FFA03B /* ParkingLocationAnnotation.m */,
 				842115261DC15F0A00FFA03B /* Main.storyboard */,
 				842115291DC15F0A00FFA03B /* Assets.xcassets */,
 				8421152B1DC15F0A00FFA03B /* LaunchScreen.storyboard */,
@@ -170,6 +179,11 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = P339YGCLEU;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -257,7 +271,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				842115251DC15F0A00FFA03B /* ViewController.m in Sources */,
+				842115431DC2D89400FFA03B /* ParkingLocationAnnotation.m in Sources */,
+				842115251DC15F0A00FFA03B /* PRMapViewController.m in Sources */,
 				842115221DC15F0A00FFA03B /* AppDelegate.m in Sources */,
 				8421151F1DC15F0A00FFA03B /* main.m in Sources */,
 				8421153E1DC29FA200FFA03B /* ParkingLocationModel.m in Sources */,

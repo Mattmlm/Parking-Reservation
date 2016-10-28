@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "PRMapViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    UIWindow *window = [[UIWindow alloc] init];
+    UIViewController *viewController = [[PRMapViewController alloc] init];
+    [window setRootViewController:viewController];
+    [window addSubview:viewController.view];
+    self.window = window;
+    [window makeKeyAndVisible];
+    
     return YES;
 }
 

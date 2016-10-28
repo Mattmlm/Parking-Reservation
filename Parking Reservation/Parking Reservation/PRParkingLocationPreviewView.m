@@ -8,6 +8,7 @@
 
 #import "PRParkingLocationPreviewView.h"
 #import "PRNetworking.h"
+#import "PRNotificationManager.h"
 
 @interface PRParkingLocationPreviewView()
 

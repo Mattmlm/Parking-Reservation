@@ -14,4 +14,6 @@
 - (instancetype)init NS_UNAVAILABLE NS_DESIGNATED_INITIALIZER;
 + (instancetype)sharedInstance;
 
+- (void)scheduleNotifications:(NSDate *)date;
+
 @end

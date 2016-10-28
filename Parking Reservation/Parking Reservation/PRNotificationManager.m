@@ -28,9 +28,28 @@
     return sharedInstance;
 }
 
-- (void)registerNotifications
+- (void)scheduleNotifications:(NSDate *)date
 {
+    NSDate *tempDate = [NSDate dateWithTimeIntervalSinceNow:10];
+    NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *components = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit|NSTimeZoneCalendarUnit) fromDate:tempDate];
+    NSDateComponents *newComponents = [components copy];
     
+    UNCalendarNotificationTrigger *trigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:newComponents repeats:NO];
+    
+    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+    content.title = @"Testing";
+    content.body = @"This better work.";
+    content.sound = [UNNotificationSound defaultSound];
+    
+    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"testingNotification" content:content trigger:trigger];
+    
+    [[UNUserNotificationCenter currentNotificationCenter] removeAllPendingNotificationRequests];
+    [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+        if (error != nil) {
+            NSLog(@"Notification did not work.");
+        }
+    }];
 }
 
 @end

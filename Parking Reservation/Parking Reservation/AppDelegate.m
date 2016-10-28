@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+@import UserNotifications;
 #import "PRMapViewController.h"
 @import Fabric;
 @import Crashlytics;
@@ -27,6 +28,12 @@
     [window addSubview:viewController.view];
     self.window = window;
     [window makeKeyAndVisible];
+    
+    [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:UNAuthorizationOptionAlert|UNAuthorizationOptionSound completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        if (!granted) {
+            NSLog(@"User did not give permission.");
+        }
+    }];
     
     [Fabric with:@[[Crashlytics class]]];
     
